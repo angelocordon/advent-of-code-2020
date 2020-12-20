@@ -1,13 +1,20 @@
 const findTargetNumbers = (numbers) => {
     let results; 
 
-    for (let index = 0; index < numbers.length; index++) {
-        const targetNumber = 2020 - numbers[index];
-        const targetNumberIndex = numbers.indexOf(targetNumber);
+    firstLoop: for (let firstIndex = 0; firstIndex < numbers.length; firstIndex++) {
+        // 2020 - 979 = 1041
+        // 1041 - 366 = 675
+        // [979, 366, 675]
 
-        if (targetNumberIndex > -1) {
-            results = [numbers[index], targetNumber];
-            break;
+        const currentNumber = numbers[firstIndex];
+
+        secondLoop: for (let secondIndex = firstIndex; secondIndex < numbers.length; secondIndex++) {
+            const targetNumber = (2020 - currentNumber) - numbers[secondIndex];
+
+            if (numbers.indexOf(targetNumber) > -1) {
+                results = [currentNumber, numbers[secondIndex], targetNumber];
+                break firstLoop;
+            }
         }
     }
 

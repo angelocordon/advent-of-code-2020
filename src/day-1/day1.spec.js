@@ -11,20 +11,20 @@ describe('Day 1', () => {
 		];
 
 	describe('findTargetNumbers', () => {
-		it('returns an array of two numbers equal to 2020', () => {
-			expect(findTargetNumbers(list)).toEqual([1721, 299])
+		it('returns an array of three numbers equal to 2020', () => {
+			expect(findTargetNumbers(list)).toEqual([979, 366, 675]);
 		});        
 	});
 
 	describe('multiplyNumbers', () => {
 	it('multiplies numbers together', () => {
-			expect(multiplyNumbers([1721, 299])).toEqual(514579);
+			expect(multiplyNumbers([979, 366, 675])).toEqual(241861950);
 		});
 	});
 
 	describe('findDayOneAnswer', () => {
 		it('returns the correct answer for day one', () => {
-			expect(findDayOneAnswer(list)).toEqual(514579);
+			expect(findDayOneAnswer(list)).toEqual(241861950);
 		})
 	});
 });
