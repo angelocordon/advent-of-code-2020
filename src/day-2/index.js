@@ -1,13 +1,9 @@
-// 1-3 a: abcde
-// 1-3 b: cdefg
-// 2-9 c: ccccccccc
-
 const passwordIsValid = ({min, max, letter, string}) => {
-    let targetLetters = string.split('').filter((targetLetter) => targetLetter === letter);
+    const minHasLetter = string[min - 1] === letter;
+    const maxHasLetter = string[max - 1] === letter;
 
-    if (targetLetters.length >= min && targetLetters.length <= max) {
-        return true;
-    }
+    if (minHasLetter && maxHasLetter) { return false }
+    if (minHasLetter || maxHasLetter) { return true }
 
     return false;
 }
@@ -20,7 +16,7 @@ const countValidPasswords = (passwords) => {
             count++
         }
     }
-
+  
     return count;
 }
 

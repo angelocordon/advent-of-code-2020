@@ -2,7 +2,7 @@ import { countValidPasswords, passwordIsValid } from './index';
 
 describe('Day 2', () => {
     describe('passwordIsValid', () => {
-        describe('when a letter occurs within the minimum amount of times listed', () => {
+        describe('when a letter occurs only once between the min and max positions', () => {
             const password = {
                 min: 1,
                 max: 3,
@@ -14,18 +14,18 @@ describe('Day 2', () => {
                 expect(passwordIsValid(password)).toBe(true);
             })
         });
+    });
 
-        describe('when a letter occurs more than the maximum amount of times listed', () => {
-            const password = {
-                min: 1,
-                max: 3,
-                letter: 'a',
-                string: 'abcdeaaaaa'
-            }
+    describe('when a letter occurs more than once between the min and max positions', () => {
+        const password = {
+            min: 1,
+            max: 3,
+            letter: 'b',
+            string: 'cdefg'
+        }
 
-            it('returns false', () => {
-                expect(passwordIsValid(password)).toBe(false);
-            });
+        it('returns false', () => {
+            expect(passwordIsValid(password)).toBe(false);
         });
     });
 
@@ -37,7 +37,7 @@ describe('Day 2', () => {
         ]
         
         it('returns a value of valid passwords', () => {
-            expect(countValidPasswords(passwords)).toEqual(2);
+            expect(countValidPasswords(passwords)).toEqual(1);
         });
     });
 });
